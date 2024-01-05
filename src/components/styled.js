@@ -4,8 +4,14 @@ import { Container, List, ListItem } from '@mui/material';
 export const StyledForm = styled('form')({
   display: 'flex',
   flexDirection: 'column',
-  maxWidth: '300px',
+  maxWidth: '400px',
   margin: 'auto',
+  marginBottom: '20px',
+});
+
+export const StyledLabelWrapper = styled('div')({
+  display: 'flex',
+  gap: '10px',
 });
 
 export const StyledLabel = styled('label')({
@@ -29,4 +35,8 @@ export const StyledListItem = styled(ListItem)({
   border: '1px solid #ddd',
   marginBottom: '10px',
   borderRadius: '5px',
+});
+
+export const BoldText = styled('span')({
+  fontWeight: '500',
 });

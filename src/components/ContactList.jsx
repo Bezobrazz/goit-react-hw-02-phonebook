@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyledList, StyledListItem } from './styled';
+import { StyledList, StyledListItem, BoldText } from './styled';
 import { Button } from '@mui/material';
 
 const ContactList = ({ contacts, onDeleteContact }) => (
   <StyledList>
     {contacts.map(({ id, name, number }) => (
       <StyledListItem key={id}>
-        {name}: {number}
+        <div>
+          <BoldText>{name}:</BoldText> {number}
+        </div>
         <Button
           type="text"
           variant="contained"

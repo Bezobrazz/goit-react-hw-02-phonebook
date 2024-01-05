@@ -4,7 +4,7 @@ import { Typography, Input } from '@mui/material';
 
 const Filter = ({ value, onChange }) => (
   <StyledContainer>
-    <Typography variant="h3" align="center">
+    <Typography variant="h3" align="center" fontSize="20px">
       Find contacts by name
     </Typography>
     <Input
