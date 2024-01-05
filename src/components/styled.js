@@ -23,6 +23,8 @@ export const StyledList = styled(List)({
 });
 
 export const StyledListItem = styled(ListItem)({
+  display: 'flex',
+  justifyContent: 'space-between',
   padding: '10px',
   border: '1px solid #ddd',
   marginBottom: '10px',

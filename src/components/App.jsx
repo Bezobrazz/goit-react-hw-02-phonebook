@@ -5,6 +5,7 @@ import { Typography } from '@mui/material';
 import ContactForm from './ContactForm';
 import Filter from './Filter';
 import ContactList from './ContactList';
+import { Notify } from 'notiflix';
 
 export default class App extends Component {
   state = {
@@ -28,6 +29,13 @@ export default class App extends Component {
     }));
   };
 
+  onDeleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+    Notify.success('Contact deleted successfully.');
+  };
+
   render() {
     const { filter, contacts } = this.state;
     const filteredContacts = contacts.filter(contact =>
@@ -47,7 +55,10 @@ export default class App extends Component {
           Contacts
         </Typography>
         <Filter value={filter} onChange={this.onInputChange} />
-        <ContactList contacts={filteredContacts} />
+        <ContactList
+          onDeleteContact={this.onDeleteContact}
+          contacts={filteredContacts}
+        />
       </StyledContainer>
     );
   }
