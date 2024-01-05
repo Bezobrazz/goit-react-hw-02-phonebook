@@ -6,6 +6,7 @@ import ContactForm from './ContactForm';
 import Filter from './Filter';
 import ContactList from './ContactList';
 import { Notify } from 'notiflix';
+import { nanoid } from 'nanoid';
 
 export default class App extends Component {
   state = {
@@ -16,6 +17,23 @@ export default class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
+  };
+
+  onFormSubmit = ({ name, number }) => {
+    const isNameAlreadyExist = this.state.contacts.some(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (isNameAlreadyExist) {
+      Notify.failure(
+        `Contact with name '${name}' already exists in the phonebook.`
+      );
+    } else {
+      const uniqueId = nanoid();
+      this.setState(prevState => ({
+        contacts: [{ id: uniqueId, name, number }, ...prevState.contacts],
+      }));
+    }
   };
 
   onInputChange = e => {
@@ -50,6 +68,7 @@ export default class App extends Component {
         <ContactForm
           contacts={this.state.contacts}
           onContactSubmit={this.onContactSubmit}
+          onFormSubmit={this.onFormSubmit}
         />
         <Typography variant="h2" align="center" fontSize="40px" gutterBottom>
           Contacts
