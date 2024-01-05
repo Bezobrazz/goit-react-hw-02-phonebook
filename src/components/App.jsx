@@ -39,7 +39,10 @@ export default class App extends Component {
         <Typography variant="h1" align="center" gutterBottom>
           Phonebook
         </Typography>
-        <ContactForm onContactSubmit={this.onContactSubmit} />
+        <ContactForm
+          contacts={this.state.contacts}
+          onContactSubmit={this.onContactSubmit}
+        />
         <Typography variant="h2" align="center" gutterBottom>
           Contacts
         </Typography>
