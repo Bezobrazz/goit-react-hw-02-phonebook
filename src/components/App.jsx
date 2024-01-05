@@ -24,11 +24,11 @@ export default class App extends Component {
     const uniqueId = nanoid();
     this.setState(prevState => ({
       contacts: [
-        ...prevState.contacts,
         { id: uniqueId, name: prevState.name, number: prevState.number },
+        ...prevState.contacts,
       ],
       name: '',
-      number: ' ',
+      number: '',
     }));
   };
 
